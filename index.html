@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AR WEB</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="logo.png" sizes="32x32">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="js/jquery-3.5.1.min.js"></script>
+  <script src="js/bootstrap.js"></script>
+<style>
+    body {
+        position: relative;
+    }
+    #section1 {padding-top: 50px; height: auto; color: #fff; background-color:brown}
+    #section2 {padding-top: 50px; height: auto; color: #fff; background-color:chartreuse}
+    #section3 {padding-top: 50px; height: auto; color: #fff; background-color:crimson}
+    #section4 {padding-top: 50px; height: auto; color: #fff; background-color:darkgreen}
+    #section5 {padding-top: 50px; height: auto; color: #fff; background-color:darkgrey padding-bottom: 100px;}
+    
+    h1{
+        font-size: 72px;
+    }
+    #section2 img{
+        height: 450px;
+    }
+    #section3 img{
+        height: 400px;
+        width: 200px;
+    }
+
+    .purplepine{
+        background: #000000; /* fallback for old browser */
+        background: -webkit-linear-gradient(to right, #000000, #000000); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #000000, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        border-bottom: 2px solid rgb(212, 212, 212);
+    }
+
+    .mauve{
+        background: #000000; /* fallback for old browser */
+        background: -webkit-linear-gradient(to right, #000000, #000000); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #000000, #000000); /* Chrome 10-25, Safari 5.1-6 */
+        border-bottom: 2px solid rgb(224, 211, 211);
+    }
+
+    .mice-elf{
+        background: #43df50; /* fallback for old browser */
+        background: -webkit-linear-gradient(to right, #b69696, #000000); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #000000, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        border-bottom : 2px solid rgb(243, 247, 246);
+    }
+
+    .paradise{
+        background: #8e9eab; /* fallback for old browser */
+        background: -webkit-linear-gradient(to right, #eef2f3, #8e9eab); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #eef2f3, #8e9eab); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        border-bottom: 22px solid #ddd;
+    }
+    
+    .zoom {
+        padding: 50px;
+        background-color: green;
+        transition: transform .2s;
+        width: 200px;
+        height: 200px;
+        margin: 0 auto;
+    }
+
+    .zoom:hover{
+        -ms-transform: scale(1.5); /* IE 9*/
+        -webkit-transform: scale(1.5); /* safari 3-8*/
+        transform: scale(1.5);
+    }
+
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0.2);
+        max-width: 300px;
+        margin: auto;
+        text-align: center;
+        font-family: arial;
+    }
+
+    .title{
+        color: #fff;
+        font-size: 18px;
+    }
+
+    button {
+        border: none;
+        outline: 0;
+        display: inline-block;
+        padding: 8px;
+        color: white;
+        background-color: #000;
+        text-align: center;
+        cursor: pointer;
+        width: 100%;
+        font-size: 18px;
+    }
+
+    a {
+        text-decoration: none;
+        /*font-size: 22px;*/
+        color: black;
+    }
+
+    button:hover, a:hover {
+        opacity: 0.7;
+    }
+
+    .bungkus-overlay {
+        position: relative;
+    }
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+        transition: .5s ease;
+        background-color: #20002c;
+    }
+
+    .bungkus-overlay:hover .overlay {
+        opacity: 0.8;
+    }
+
+    .text {
+        color: white;
+        font-size: 20px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+
+    .progres-container{
+        width: 100%;
+        height: 2px;
+    }
+
+    .progres-bar {
+        height: 2px;
+        background: #ffa751;
+        width: 0%;
+    }
+
+    *{
+        box-sizing: border-box;
+    }
+
+    .column img{
+        margin-top: 8px;
+        vertical-align: middle;
+        width: 100%;
+    }
+
+    .row{
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0 4px;
+    }
+
+    .column {
+        flex: 20%;
+        max-width: 20%;
+        padding: 0 4px;
+    }
+
+    .porto-container {
+        position: relative;
+    }
+
+    .porto-overlay {
+        position: absolute;
+        bottom: 0;
+        background: #000;
+        background: rgba(0, 0, 0, 0.5); /* Black see-through */
+        color: #f1f1f1;
+        width: 100%;
+        transition: .5s ease;
+        opacity: 0;
+        color: white;
+        font-size: 20px;
+        padding: 20px;
+        text-align: center;  
+    }
+
+    .porto-container:hover .porto-overlay {
+        opacity: 1;
+    }
+
+    #myProgress {
+        width: 100%;
+        background-color: #ffa751;
+    }
+
+    #myDownloadBar{
+        width: 1%;
+        height: 30px;
+        background-color: #ffa751;
+    }
+
+    .fa {
+        font-size: 25px;
+    }
+
+    .checked {
+        color: rgb(251, 255, 2);
+    }
+
+    .side {
+        float: left;
+        width: 15%;
+        margin-top: 10px;
+    }
+
+    .middle{
+        margin-top: 10px;
+        float: left;
+        width: 70%;
+    }
+
+    .right{
+        text-align: right;
+    }
+
+    .rows:after{
+        content: "";
+        display: table;
+        clear: both;
+    }
+    
+    .bar-container {
+        width: 100%;
+        background-color: #f1f1f1;
+        text-align: center;
+        color: white;
+    }
+
+    .bar-5 {width: 87%; height: 18px; background: linear-gradient(to right, #f46b45, #FFD194);}
+    .bar-4 {width: 78%; height: 18px; background: linear-gradient(to right, #f46b45, #FFD194);}
+    .bar-3 {width: 50%; height: 18px; background: linear-gradient(to right, #f46b45, #FFD194);}
+    .bar-2 {width: 17%; height: 18px; background: linear-gradient(to right, #f46b45, #FFD194);}
+    .bar-1 {width: 22%; height: 18px; background: linear-gradient(to right, #f46b45, #FFD194);}
+
+    @media screen and (max-width: 800px) {
+        .column {
+            flex: 50%;
+            max-width: 50%;
+        }
+    }
+
+    @media screen and (max-width: 600px) {
+        .side, .middle {
+            width: 100%;
+        }
+        .right{
+            display:  none;
+        }
+    }
+</style>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-targe="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button> 
+            </div>
+        </div>
+        <a class="navbar-brand" href="#section2">A R</a> 
+        <div class="collapse navbar-collapse" id="myNavbar"> 
+            <ul class="nav navbar-nav">
+                <li><a href="#section1">Home</a></li>
+                <li><a href="#section2">Who I'm</a></li>
+                <li><a href="#section3">Portofolio</a></li>
+                <li><a href="#section4">Video</a></li>
+                <li><a href="#section5">Contact</a></li>
+                <li><a href="#section6">Skill</a></li>
+            </ul>
+        </div>
+    </div>
+</div> 
+
+        <div class="header">
+            <div class="progress-container">
+                <div class="progress-bar" id="myScrollBar"></div>
+            </div>
+        </div>
+    </nav>
+<div id="section1" class="container-fluid purplepine">
+    <div>
+        <div id="demo" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#demo" data-slide-to="0" class="active"></li>
+              <li data-target="#demo" data-slide-to="1"></li>
+              <li data-target="#demo" data-slide-to="2"></li>
+            </ol>
+        
+            <div class="carousel-inner">
+              <div class="item active">
+                <img src="1.jpg" alt="Chania" style="width: 100%; height: 50%;">
+                <div class="carousel-caption">
+                  <h3>WELCOME TO MY WEBSITE</h3>
+                </div>
+              </div>
+          
+              <div class="item">
+                <img src="2.jpg" alt="Chicago" style="width: 100%; height: 50%;">
+                <div class="carousel-caption">
+                  
+                </div>
+              </div>
+          
+              <div class="item">
+                <img src="3.jpg" alt="New York" style="width: 100%; height: 50%;">
+                <div class="carousel-caption">
+                  
+                </div>
+              </div>
+            </div>
+    
+            <a class="left carousel-control" href="#demo" data-slide="prev">
+              <span class="glyphicon glyphicon-chevron-left"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#demo" data-slide="next">
+              <span class="glyphicon glyphicon-chevron-right"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+    </div>
+</div> 
+<div id="section2" class="container-fluid mauve">
+    <div class="col-md-6">
+    <h1>I'm Alfian <span style="color:yellowgreen;">Rahim</span></h1>
+    <h3>Hello Everyone! Nama saya Alfian Rahim saya lahir di yogyakarta 28 ferbruari 2001 saya anak ke-2 dari 4 bersaudara. saya senang sekali dalam hal bermusik seperti vocal contohnya. saya sekarang berkuliah di universitas amikom yogyakarta. saya dari kecil sampai sma tinggal di kalimantan tengah ngikut sama papah karena papah sendiri orang kalimantan, dan sekarang saya tinggal di yogyakarta di rumah keluar ibu sendiri. sampai sini dulu ya perkenalannya hehehehe dan terimakasih juga sudah mampir ke website ku :)</h3>
+    <button class="btn btn-default" style="width:30%;" data-toggle="modal" data-target="#myModal" onclick="move()">Download CV</button>
+    <button class="btn btn-default" style="width:30%;">Contact Me</button>
+    </div>
+        <div class="col-md-6">
+            <img src="al2.jpeg" width="400px" class="img-thumbnail">
+        </div>
+</div>
+<div id="section3" class="container-fluid mauve">
+    <h1>My <span style="color:tomato;">Porto's</span></h1>
+    <h4>It's my portofolio and my editing photo's</h4>
+    <div class="row">
+        <div class="column">
+            <div class="porto-container">
+                <img src="aqua.jpeg">
+                <div class="porto-overlay">
+                 Aquaman
+                </div>
+            </div>
+        </div>
+        <div class="column">
+                <div class="porto-container">
+                    <img src="hulk.jpeg">
+                    <div class="porto-overlay">
+                    Hulk Transformation
+                    </div>
+                </div>
+        </div>
+        <div class="column">
+            <div class="porto-container">
+                <img src="star.jpeg">
+                <div class="porto-overlay">
+                 Avenger
+                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="section4" class="container-fluid  mauve">
+    <iframe width="1300" height="555"
+    src="https://www.youtube.com/embed/F7Lbq7q5sF0">
+    </iframe>
+</div>
+<div id="section5" class="container-fluid mice-elf">
+    <h1>Find Me <span style="color:wheat;">On</span></h1>
+    <h4>Don't forget to follow me on sosial media</h4> <br>
+    <div class="col-md-4">
+        <h2 style="text-align:center">Twitter</h2>
+        <div class="card bungkus-overlay">
+            <h1>Alfian</h1>
+            <p class="title">Social Media</p>
+            <p>itsmesweety_</p>
+            <p><button style="background-color: #396afc;"><i class="fa fa-twitter"></i></button></p>
+                <div class="overlay">
+                    <div class="text">Twitter</div>
+                </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+            <h2 style="text-align:center">Instagram</h2>
+            <div class="card bungkus-overlay">
+                <h1>A R</h1>
+                <p class="title">My Id</p>
+                <p>alrmnce</p>
+                <p>alrhmnce_</p>
+                <p><button style="background: linear-gradient(to right, #e41c6f, #f2fcfe);"><i class="fa fa-instagram"></i></button></p>
+                    <div class="overlay">
+                        <div class="text">Instagram</div>
+                    </div>
+            </div>
+        </div>
+    <div class="col-md-4">
+        <h2 style="text-align:center">Facebook</h2>
+        <div class="card bungkus-overlay">
+            <h1>User Name</h1>
+            <p>Alfian Rahim</p>
+            <p><button style="background-color: blue;" );"><i class="fa fa-facebook"></i></button></p>
+                <div class="overlay">
+                    <div class="text">Facebook</div>
+                </div>
+            </div> 
+        </div>
+    </div>
+</div>
+<div id="section6" class="container-fluid mauve">
+    <h1>My Skill <span style="color: chartreuse">Ratting</span></h1>
+    <span class="heading">Skill Rating</span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star"></span>
+    <hr style="border:3px solid #f1f1f1">
+
+    <div class="container">
+    <div class="rows">
+        <div class="side">
+            <div>Design Graphic</div>
+        </div>
+        <div class="middle">
+            <div class="bar-container">
+                <div class="bar-5"></div>
+            </div>
+        </div>
+        <div class="side right">
+            <div>87%</div>
+        </div>
+        <div class="side">
+            <div>Ms. Office</div>
+        </div>
+        <div class="middle">
+            <div class="bar-container">
+                <div class="bar-4"></div>
+            </div>
+        </div>
+        <div class="side right">
+            <div>70%</div>
+        </div>
+        <div class="side">
+            <div >English</div>
+        </div>
+        <div class="middle">
+            <div class="bar-container">
+                <div class="bar-3"></div>
+            </div>
+        </div>
+        <div class="side right">
+            <div>50%</div>
+        </div>
+        <div class="side">
+            <div>HTML</div>
+        </div>
+        <div class="middle">
+            <div class="bar-container">
+            <div class="bar-1"></div>
+        </div>
+     </div>
+    <div class="side right">
+        <div>22%</div>
+    </div>
+    </div>
+    </div>
+</div>
+
+<footer class="container-fluid text-center">
+    <h3>Thank you for visiting at my blog<a href="bootstrap.me" title="visit my blog">AR</a></h3>
+</footer>
+<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+<div id="preloader"></div>
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Wait a minute...</h4>
+            </div>
+            <div class="modal-body">
+                <div id="myProgress">
+                    <div id="myDownloadBar"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</header>
+<script>
+    $(document).ready(function(){
+
+    // Add scrollspy to <body> 
+    $('body').scrollspy({target: ".navbar", offset: 50});
+
+    // Add smooth scrolling on all links inside the navbar 
+    $("#myNavbar a").on('click', function(event) {
+         // Make sure this.hash has a value before overriding default behavior 
+         if (this.hash !== "") {
+             // Prevent default anchor click behavior 
+             event.preventDefault();  
+            // Store hash 
+            var hash = this.hash;
+            // Using jQuery's animate() method to add smooth page scroll
+            // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+            $('html, body').animate({ 
+                scrollTop: $(hash).offset().top
+            }, 800, function(){
+                 // Add hash (#) to URL when done scrolling (default click behavior)
+                 window.location.hash = hash;
+                });
+            }  // End if
+        });
+    });
+</script>
+<script>
+     window.onscroll = function() {myFunction()};
+     function myFunction() {
+        var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;  
+        var scrolled = (winScroll / height) * 100;
+        document.getElementById("myScrollBar").style.width = scrolled + "%";
+    }
+</script>
+<script>
+     var i = 0;
+     function move() {
+        if (i == 0) {
+            i = 1;
+            var elem = document.getElementById("myDownloadBar");
+            var width = 1;
+            var id = setInterval(frame, 50);
+            function frame() {
+                if (width >= 100) {
+                    clearInterval(id);
+                    i = 0;
+                } else {
+                    width++;
+                    elem.style.width = width + "%";
+                }
+            }
+        }
+    }
+</script>
+<script> 
+     setTimeout(function() {
+        $('#myModal').modal('hide');
+    }, 7000);
+</script>
+</body>
+</html>
