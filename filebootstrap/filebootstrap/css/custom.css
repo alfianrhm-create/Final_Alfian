@@ -1,0 +1,13 @@
+.bayangan{
+box-shadow: 2px 11px 16px rgba(0, 0, 0, 0.8);
+}
+.baris{
+display:block;
+}
+.panel-heading {
+    padding: 10px 15px;
+    border-bottom: 1px solid transparent;
+    border-bottom-color: transparent;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+	}
